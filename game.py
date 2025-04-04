@@ -22,9 +22,8 @@ def handle_events():
     return True
 
 
-def draw_text(screen,text,font,x,y,font_size,font_color,font_name = None,bold = False, italic = False):
-    image = font.render(text,True,text_color)
-    screen.blit(screen,(x,y))
+def draw_text(screen,text,x,y,font_size,font_color,font_name = None,bold = False, italic = False):
+    pygame.draw.text(screen,text,x,y,font_size,font_color,font_name,bold,italic)
     
     
 
