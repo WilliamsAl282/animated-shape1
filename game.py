@@ -23,8 +23,10 @@ def handle_events():
 
 
 def draw_text(screen,text,x,y,font_size,font_color,font_name = None,bold = False, italic = False):
-    pygame.draw.text(screen,text,x,y,font_size,font_color,font_name,bold,italic)
     
+    font = pygame.font.SysFont(None,font_size)
+    image = font.render(text,True, font_color)
+    screen.blit(image,(x,y))
     
 
 def draw_rectangle(screen, color, x, y, width, height):
@@ -34,7 +36,13 @@ def main():
     screen = init_game()
     running = True
     clock = pygame.time.Clock() # Initialize the clock her
-    
+    color = config.PURPLE
+    square_x = 10
+    square_y = 20
+
+    square_change_x = 5
+    square_change_y = 5
+
     
     while running:
         running = handle_events()
@@ -43,7 +51,21 @@ def main():
         x1 = 75
         y1 = 100
         font_size1 = 48
+
+        text2 = "Career Tech"
+        x2 = 75
+        y2 = 150
+        font_size2 = 48
+
+        text3 = "Animated Shape Ver 1.0"
+        x3 = 75
+        y3 = 200
+        font_size3 = 48
         draw_text(screen, text1,x1,y1,font_size1,config.BLUE)
+        draw_text(screen, text2,x2,y2,font_size2,config.RED)
+        draw_text(screen, text3,x3,y3,font_size3,config.GREEN)
+        draw_rectangle(screen,color,square_x,square_y, 10,10)
+
         pygame.display.flip()
 
         # Limit the frame rate to the specified frames per second (FPS)
