@@ -30,7 +30,7 @@ def draw_text(screen,text,x,y,font_size,font_color,font_name = None,bold = False
     
 
 def draw_rectangle(screen, color, x, y, width, height):
-    pygame.draw.rect(screen,color,x,y,width,height)
+    pygame.draw.rect(screen,color,[x,y,width,height])
 
 def main():
     screen = init_game()
@@ -43,6 +43,8 @@ def main():
     square_change_x = 5
     square_change_y = 5
 
+    square_x = square_x + square_change_x
+    square_y = square_y + square_change_y
     
     while running:
         running = handle_events()
@@ -61,10 +63,14 @@ def main():
         x3 = 75
         y3 = 200
         font_size3 = 48
+
+        square_x = square_x + square_change_x
+        square_y = square_y + square_change_y
+
         draw_text(screen, text1,x1,y1,font_size1,config.BLUE)
         draw_text(screen, text2,x2,y2,font_size2,config.RED)
         draw_text(screen, text3,x3,y3,font_size3,config.GREEN)
-        draw_rectangle(screen,color,square_x,square_y, 10,10)
+        draw_rectangle(screen,color,square_x,square_y, config.SQUARE_WIDTH,config.SQUARE_HEIGHT)
 
         pygame.display.flip()
 
