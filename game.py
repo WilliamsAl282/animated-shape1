@@ -39,12 +39,13 @@ def main():
     color = config.PURPLE
     square_x = 10
     square_y = 20
+    speed_x, speed_y = 5, 5
 
-    square_change_x = 1
-    square_change_y = 1
+    # square_change_x = 1
+    # square_change_y = 1
 
-    square_x = square_x + square_change_x
-    square_y = square_y + square_change_y
+    # square_x = square_x + square_change_x
+    # square_y = square_y + square_change_y
     
     while running:
         running = handle_events()
@@ -64,13 +65,21 @@ def main():
         y3 = 200
         font_size3 = 48
 
-        square_x = square_x + square_change_x
-        square_y = square_y + square_change_y
+        # square_x = square_x + square_change_x
+        # square_y = square_y + square_change_y
+
+        square_x += speed_x
+        square_y += speed_y
 
         draw_text(screen, text1,x1,y1,font_size1,config.BLUE)
         draw_text(screen, text2,x2,y2,font_size2,config.RED)
         draw_text(screen, text3,x3,y3,font_size3,config.GREEN)
         draw_rectangle(screen,color,square_x,square_y, config.SQUARE_WIDTH,config.SQUARE_HEIGHT)
+
+        if square_x + config.SQUARE_WIDTH > config.WINDOW_WIDTH - 1 or square_x < 0:
+            speed_x = -speed_x
+        if square_y + config.SQUARE_HEIGHT > config.WINDOW_HEIGHT - 1 or square_y < 0:
+            speed_y = -speed_y
 
         pygame.display.flip()
 
