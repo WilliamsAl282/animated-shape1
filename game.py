@@ -40,8 +40,8 @@ def main():
     square_x = 10
     square_y = 20
 
-    square_change_x = 5
-    square_change_y = 5
+    square_change_x = 1
+    square_change_y = 1
 
     square_x = square_x + square_change_x
     square_y = square_y + square_change_y
